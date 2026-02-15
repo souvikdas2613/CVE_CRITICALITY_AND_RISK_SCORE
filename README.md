@@ -167,9 +167,10 @@ load_dotenv()
 ### 📦 How to Run The Tool without MCP
 
 ```bash
-python [CVE_CRITICALITY_WITHOUT_MCP_GRADIO.py
+python CVE_CRITICALITY_WITHOUT_MCP_GRADIO.py
 
 ```
+Click below to get te File directly
 
 [CVE_CRITICALITY_WITHOUT_MCP_GRADIO.py](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/CVE_CRITICALITY_WITHOUT_MCP_GRADIO.py)
 
@@ -193,9 +194,9 @@ Click on the DOWNLAODABLE link on Gradio UI and download the file in local machi
 
 ```
 
-A sample INPUT EXCEL file to show How the Details in each column and should it be their nomenclature, Here in the repository we kep. File name : [cve.xlsx](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/cve.xlsx)
+- A sample INPUT EXCEL file to show How the Details in each column and should it be their nomenclature, Here in the repository we kep. File name : [cve.xlsx](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/cve.xlsx)
 
-Sample output file also kept in this repository name : [llm_prioritized_vulnerabilities.xlsx](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/llm_prioritized_vulnerabilities.xlsx)
+- Sample output file also kept in this repository name : [llm_prioritized_vulnerabilities.xlsx](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/llm_prioritized_vulnerabilities.xlsx)
 
 ---
 
