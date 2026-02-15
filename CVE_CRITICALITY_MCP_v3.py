@@ -1,17 +1,12 @@
-#   ==============      pip install pandas openpyxl requests openai  ==========  #
+#   pip install pandas openpyxl requests    #
 import sys
 import pandas as pd
 import requests
-from openai import OpenAI
 from dotenv import load_dotenv
 import json
 import os
-#import gradio as gr
 import threading
 import time
-from collections import defaultdict
-
-from typing import Any
 from mcp.server.fastmcp import FastMCP
 
 log_script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -21,9 +16,7 @@ LOG_FILE = os.path.join(log_script_dir, "CVE_CRITICALITY_MCP.log")
 def log (msg):
     with open(LOG_FILE, "a") as f:
         f.write("\n")
-        #a=str(msg)
         f.write(str(msg))
-
 
 # Initialize FastMCP server
 mcp = FastMCP("cve-ranking-agent")
@@ -128,7 +121,11 @@ def wait_for_nvd_rate_limit():
         # Record this request
         nvd_request_times.append(time.time())
 
-@mcp.tool()
+@mcp.tool(
+    name="getread_excel_sheet",
+    description="Whenever user asks anything about CVE or Vulnaribility, Run this MCP Tool. User may prompt like Get the CVE data or Generate the ranked CVEs. Whatever Users ask about CVE, just run this tool. The Name of the input Excel sheet is cve.xlsx which is kept on the same directory where this Python file exists. Rank CVEs by CVSS_RISK_SCORE, RANK and reason. At the end it will give me output of excel file with ranked CVEs. And save it to the same directory with name llm_prioritized_vulnerabilities.xlsx. And return the path of the output file."
+)
+
 async def getread_excel_sheet(EXCEL_FILE: str = ""):
     """Get The excel sheet about CVE. Name of the Excel sheet can be cve.xls.
         Rank CVEs by CVSS_RISK_SCORE and add RANK + reason

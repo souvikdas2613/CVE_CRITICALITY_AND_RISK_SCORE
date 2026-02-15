@@ -2,17 +2,16 @@
 
 import pandas as pd
 import requests
-from openai import OpenAI
+#from openai import OpenAI
 from dotenv import load_dotenv
 import json
 import os
 import gradio as gr
 import threading
 import time
-from collections import defaultdict
+#from collections import defaultdict
 import logging
-
-from typing import Any
+#from typing import Any
 
 LOG_FILE = "CVE_CRITICALITY_WITHOUT_MCP.log"
 
