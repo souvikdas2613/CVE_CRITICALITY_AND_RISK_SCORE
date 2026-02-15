@@ -71,6 +71,7 @@ Install the required Python packages using `pip`:
 ```bash
 pip install pandas openpyxl requests python-dotenv
 
+---
 
 ### 📥 Imported Modules
 
