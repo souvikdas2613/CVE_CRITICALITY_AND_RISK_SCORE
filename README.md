@@ -1,4 +1,4 @@
-# CVE CRITICALITY AND RISK_SCORE EVALUATOR
+# CVE CRITICALITY AND RISK SCORE EVALUATOR
 
 A cybersecurity project focused on identifying, analyzing, and documenting **Common Vulnerabilities and Exposures (CVEs)**.  
 This repository provides tools, research, or documentation to help understand security flaws and improve system security.
@@ -57,7 +57,45 @@ Details will be provided per CVE or module.
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
 
+---
 
+
+## 📦 Requirements & Prerequisites
+
+This project requires **Python 3.9 or later**.
+
+---
+
+### 🔧 Python Dependencies
+
+Install the required Python packages using `pip`:
+
+```bash
+pip install pandas openpyxl requests python-dotenv
+
+
+### 📥 Imported Modules
+
+This project uses the following Python modules:
+
+**Standard Library**
+```python
+import sys
+import os
+import json
+import time
+import threading
+from collections import defaultdict
+from typing import Any
+
+**Third party Library**
+
+import pandas as pd
+import requests
+from dotenv import load_dotenv
+from mcp.server.fastmcp import FastMCP
+
+---
 
 ## 📖 Contributing
 
@@ -73,13 +111,16 @@ Open a pull request
 
 Please ensure all contributions follow ethical security guidelines.
 
+---
 
 ## 📖 License
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+---
 
 ## 📖 Author
 
 - KIRAN KS AND SOUVIK DAS
 - CLOUD INFRASTRUCTURE SPECIALIST
+---
