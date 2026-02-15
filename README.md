@@ -64,8 +64,6 @@ Details will be provided per CVE or module.
 
 This project requires **Python 3.9 or later**.
 
----
-
 ### 🔧 Python Dependencies
 
 Install the required Python packages using `pip`:
