@@ -124,7 +124,7 @@ Upload the Excel file containing the CVE details
 
 Click on Button "ANALIZE CVEs"
 
-It will run in and Process.
+It will run and Process the INPUT EXCEL file .
 
 Once done it will create Output file "llm_prioritized_vulnerabilities".
 
