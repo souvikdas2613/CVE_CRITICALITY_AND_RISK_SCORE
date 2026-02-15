@@ -132,7 +132,9 @@ NVD_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXX
 Load environment variables in the code:
 
 ```
-load_dotenv() ## Already mention in the code. No need to explicitly define
+## Already mention in the code. No need to explicitly define
+
+load_dotenv()
 
 ```
 
