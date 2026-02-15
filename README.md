@@ -73,7 +73,6 @@ Install the required Python packages using `pip`:
 bash
 pip install pandas openpyxl requests python-dotenv
 
----
 
 ### 🔧 Imported Modules
 
@@ -108,6 +107,31 @@ Create the environment using the provided `requirements.yaml` file:
 conda env create -f requirements.yaml
 conda activate cve-project-env
 ```
+---
+
+### 📦 How to Run The Tool without MCP
+
+```bash
+python CVE_CRITICALITY_WITHOUT_MCP_GRADIO.py
+
+It will start GRADIO on Localhost
+
+Open browser and Copy paste the link of GRADIO on port.
+
+http://127.0.0.1:7860
+
+Upload the Excel file containing the CVE details
+
+Click on Button "ANALIZE CVEs"
+
+It will run in and Process.
+
+Once done it will create Output file "llm_prioritized_vulnerabilities".
+
+Click on the DOWNLAODABLE link on Gradio UI and download the file in local machine
+
+```
+
 ---
 
 ## 📖 Contributing
