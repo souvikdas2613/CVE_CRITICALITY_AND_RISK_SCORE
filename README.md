@@ -100,6 +100,16 @@ from mcp.server.fastmcp import FastMCP
 ```
 ---
 
+### 📦 Dependency Installation (YAML)
+
+Create the environment using the provided `requirements.yaml` file:
+
+```bash
+conda env create -f requirements.yaml
+conda activate cve-project-env
+
+---
+
 ## 📖 Contributing
 
 Contributions are welcome!
