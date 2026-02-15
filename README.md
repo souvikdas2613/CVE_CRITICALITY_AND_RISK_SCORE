@@ -22,8 +22,6 @@ Each vulnerability is assigned a unique CVE ID, making it easier for security pr
 ---
 
 
----
-
 ## 🚀 Features
 
 - CVE research and analysis
@@ -61,7 +59,7 @@ Details will be provided per CVE or module.
 
 
 
-🤝 Contributing
+## 📖 Contributing
 
 Contributions are welcome!
 
@@ -76,12 +74,12 @@ Open a pull request
 Please ensure all contributions follow ethical security guidelines.
 
 
-📜 License
+## 📖 License
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
-👤 Author
+## 📖 Author
 
 KIRAN KS AND SOUVIK DAS
 CLOUD INFRASTRUCTURE SPECIALIST
