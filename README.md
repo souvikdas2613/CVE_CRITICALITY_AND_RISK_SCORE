@@ -101,7 +101,7 @@ from mcp.server.fastmcp import FastMCP
 
 ### 📦 Dependency Installation (YAML)
 
-Create the environment using the provided `[Requirements File](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/requirements.yaml)` file:
+Create the environment using the provided [Requirements File](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/requirements.yaml) file:
 
 
 ```bash
