@@ -122,7 +122,11 @@ conda activate cve-project-env
 
 5. After processing it will generate the Output file "llm_prioritized_vulnerabilities".
 
-6. On the same direcotry it generates LOG file as well
+6. On the same direcotry it generates LOG file as well.
+
+7. A sample INPUT EXCEL file to show How the Details in each column and should it be their nomenclature, Here in the repository we kep. File name : "cve.xlsx"
+
+8. Sample output file also kept in this repository name : "llm_prioritized_vulnerabilities.xlsx" 
 
 ---
 
@@ -147,6 +151,10 @@ It will run and Process the INPUT EXCEL file .
 Once done it will create Output file "llm_prioritized_vulnerabilities".
 
 Click on the DOWNLAODABLE link on Gradio UI and download the file in local machine
+
+A sample INPUT EXCEL file to show How the Details in each column and should it be their nomenclature, Here in the repository we kep. File name : "cve.xlsx"
+
+Sample output file also kept in this repository name : "llm_prioritized_vulnerabilities.xlsx" 
 
 ```
 
