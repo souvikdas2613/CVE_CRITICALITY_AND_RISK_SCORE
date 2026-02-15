@@ -1,0 +1,15 @@
+name: cve-project-env
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python>=3.9
+  - pandas
+  - openpyxl
+  - requests
+  - pip
+  - pip:
+      - python-dotenv
+      - mcp
