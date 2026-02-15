@@ -16,8 +16,9 @@ Each vulnerability is assigned a unique CVE ID, making it easier for security pr
 - Analyze known CVEs and their impact
 - Provide proof-of-concept (PoC) or reproduction steps (when applicable)
 - Document affected systems and versions
-- Support vulnerability assessment and security learning
-- Promote responsible disclosure and ethical security research
+- Calculate EPSS Percentge and CVSS RISK Score based on internationally recognized statndards and acclaimed procedures
+- RANK the Vulnerabilities and Sort it based on CVSS RISK Score, FIX Available and EPSS percentage
+- Help the Engineers to decide project flow and sprint flow based on the criticality of the components
 
 ---
 
@@ -25,9 +26,10 @@ Each vulnerability is assigned a unique CVE ID, making it easier for security pr
 ## 🚀 Features
 
 - CVE research and analysis
-- Clear and structured vulnerability documentation
-- Easy-to-understand explanations
-- Security-focused and educational approach
+- Clear and structured vulnerability documentation and Ranking
+- Easy-to-understand explanations and Reason for the Vulnerabilities
+- Input file an Excel sheet containing all the CVE IDS and Vulnerabilities description and Origin and Respective URLS
+- Output file to be genrated as An excel sheet with CVSS_Score, CVSS RISK SCore, EPSS Percentage and CVSS Vector String
 
 ---
 
@@ -45,7 +47,7 @@ The author is **not responsible** for misuse of the information provided.
 Depending on the project scope, you may need:
 - Linux / Windows
 - Python / Bash / other scripting tools
-- Vulnerable test environment (VM, Docker, lab setup)
+- Vulnerable test environment (VM, lab setup)
 
 Details will be provided per CVE or module.
 
@@ -55,7 +57,7 @@ Details will be provided per CVE or module.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCOREe.git
 
 ---
 
