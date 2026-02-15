@@ -109,6 +109,36 @@ conda activate cve-project-env
 ```
 ---
 
+### 📦 Environment Setup
+
+This project uses environment variables for sensitive configuration.
+
+Create a file .env in your project directory and keep the below Details,
+
+- GITHUB Token for your GITHUB Account
+- nvd.nist.gov TOKEN NVD_API_KEY
+
+```
+cat .env
+
+# GITHUB TOKEN
+GITHUB_TOKEN=github_pat_XXXXXXXXXXXXXXXXXXXX
+
+# NVD API Key (get free key at: https://nvd.nist.gov/developers/request-an-api-key)
+NVD_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXX
+
+```
+
+Load environment variables in the code:
+
+```
+load_dotenv() ## Already mention in the code. No need to explicitly define
+
+```
+
+---
+
+
 ### 📦 How to Run The Tool with MCP
 
 
