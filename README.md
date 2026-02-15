@@ -196,13 +196,13 @@ Sample output file also kept in this repository name : "llm_prioritized_vulnerab
 
 Contributions are welcome!
 
-Fork the repository
+- Fork the repository
 
-Create a new branch
+- Create a new branch
 
-Commit your changes
+- Commit your changes
 
-Open a pull request
+- Open a pull request
 
 Please ensure all contributions follow ethical security guidelines.
 
