@@ -68,12 +68,12 @@ This project requires **Python 3.9 or later**.
 
 Install the required Python packages using `pip`:
 
-```bash
+bash
 pip install pandas openpyxl requests python-dotenv
 
 ---
 
-### 📥 Imported Modules
+### 🔧 Imported Modules
 
 This project uses the following Python modules:
 
