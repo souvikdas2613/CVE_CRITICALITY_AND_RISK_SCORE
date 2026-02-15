@@ -109,6 +109,24 @@ conda activate cve-project-env
 ```
 ---
 
+### 📦 How to Run The Tool with MCP
+
+
+1. Open CLAUDE Desktop or CURSOR Tool
+
+2. Then GO to MCP TOOLD section inside .cursor/mcp.json file for integrating MCP Tool. Example code given in mcp.json file in this GitHub Repository. Main python file is "CVE_CRITICALITY_MCP_v3.py"
+
+3. On your Local directory keep the Python file and INPUT EXEL sheet "cve.xlsx" together. Make sure Input file name does not differ.
+
+4. Open the AI CHAT Panel in Cursor and Write : "Use the MCP Tool: TOOL NAME and Generate the Output CVE file for vulnaribilities"
+
+5. After processing it will generate the Output file "llm_prioritized_vulnerabilities".
+
+6. On the same direcotry it generates LOG file as well
+
+---
+
+
 ### 📦 How to Run The Tool without MCP
 
 ```bash
