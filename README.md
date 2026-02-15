@@ -88,13 +88,14 @@ from collections import defaultdict
 from typing import Any
 ```
 
-**Standard Library**
+**Third Party Library**
 
+```python
 import pandas as pd
 import requests
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
-
+```
 ---
 
 ## 📖 Contributing
@@ -123,5 +124,6 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 - KIRAN KS AND SOUVIK DAS
 - CLOUD INFRASTRUCTURE SPECIALIST
-- 
+
+
 ---
