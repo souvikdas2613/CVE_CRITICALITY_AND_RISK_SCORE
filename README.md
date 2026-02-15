@@ -107,7 +107,7 @@ Create the environment using the provided `requirements.yaml` file:
 ```bash
 conda env create -f requirements.yaml
 conda activate cve-project-env
-
+```
 ---
 
 ## 📖 Contributing
@@ -136,6 +136,5 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 - KIRAN KS AND SOUVIK DAS
 - CLOUD INFRASTRUCTURE SPECIALIST
-
 
 ---
