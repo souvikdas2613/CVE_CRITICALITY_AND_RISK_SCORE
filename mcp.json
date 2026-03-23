@@ -2,7 +2,7 @@
   "mcpServers": {
     "cve-ranking-agent": {
       "command": "/home/soudas/miniforge3/envs/my-proj/bin/python3",
-      "args": ["/home/soudas/CVE_SCORE_AI/CVE_CRITICALITY_MCP_v3.py"]
+      "args": ["/home/soudas/CVE_SCORE_AI/CVE_CRITICALITY_MCP_v4.py"]
     }
   }
 }
