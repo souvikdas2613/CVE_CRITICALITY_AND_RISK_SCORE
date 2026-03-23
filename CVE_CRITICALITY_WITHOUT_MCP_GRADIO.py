@@ -1,19 +1,20 @@
-#   ==============      pip install pandas openpyxl requests openai  ==========  #
+#   ==============      pip install pandas openpyxl requests  ==========  #
 
 import pandas as pd
 import requests
-#from openai import OpenAI
 from dotenv import load_dotenv
 import json
 import os
 import gradio as gr
 import threading
 import time
-#from collections import defaultdict
 import logging
-#from typing import Any
 
 LOG_FILE = "CVE_CRITICALITY_WITHOUT_MCP.log"
+
+# Clear once at startup
+with open(LOG_FILE, "w") as f:
+    f.truncate(0)
 
 def log(msg):
     with open(LOG_FILE, "a") as f:
@@ -131,8 +132,6 @@ def wait_for_nvd_rate_limit():
 
 
 def getread_excel_sheet(EXCEL_FILE):
-    log("START")
-    print ("START")
     df = pd.read_excel(EXCEL_FILE)
     df["Fix"] = df["Fix"].fillna("None")
 
@@ -192,7 +191,7 @@ def getread_excel_sheet(EXCEL_FILE):
         # Check if already in cache
         was_cached = cache_key in cvss_cache
 
-        epss, cvss, CVSS_vectorString, CVSS_RISK_SCORE, Rejected_Reason = get_cvss_score(cve, url, severity, cache=cvss_cache)
+        epss, cvss, CVSS_vectorString, CVSS_RISK_SCORE, Rejected_Reason, CWE_ID = get_cvss_score(cve, url, severity, cache=cvss_cache)
 
         if was_cached:
             cached_count += 1
@@ -211,6 +210,7 @@ def getread_excel_sheet(EXCEL_FILE):
         unique_cves[cache_key]["CVSS_vectorString"] = CVSS_vectorString
         unique_cves[cache_key]["CVSS_RISK_SCORE"] = CVSS_RISK_SCORE
         unique_cves[cache_key]["Rejected_Reason"] = Rejected_Reason
+        unique_cves[cache_key]["CWE_ID"] = CWE_ID
         
 
     # Final cache save
@@ -237,15 +237,17 @@ def getread_excel_sheet(EXCEL_FILE):
         severity = row["Severity"]
         Fix = row["Fix"]
         Rejected_Reason = cve_data.get("Rejected_Reason", None)
+        CWE_ID = cve_data.get("CWE_ID", None)
 
         vuln_data.append({
             "image": row["Component"],
-            "cve": cve,
+            "CVE_ID": cve,
             "package": row["Package"],
             "cvss_score": cvss,
             "EPSS Percentage": epss,
             "severity": severity,
             "CVSS_RISK_SCORE": CVSS_RISK_SCORE,
+            "CWE_ID": CWE_ID,
             "url": url,
             "Fix": Fix,
             "CVSS_vectorString": CVSS_vectorString,
@@ -296,7 +298,7 @@ def get_cvss_score(cve_or_ghsa, url, severity, cache=None):
     cache_key = f"{cve_or_ghsa}_{url}"
     if cache and cache_key in cache:
         cached_data = cache[cache_key]
-        return cached_data.get("epss", 0), cached_data.get("cvss", None), cached_data.get("CVSS_vectorString", None), cached_data.get("CVSS_RISK_SCORE", 0), cached_data.get("Rejected_Reason", None)
+        return cached_data.get("epss", 0), cached_data.get("cvss", None), cached_data.get("CVSS_vectorString", None), cached_data.get("CVSS_RISK_SCORE", 0), cached_data.get("Rejected_Reason", None), cached_data.get("CWE_ID", None)
 
     load_dotenv(override=True)
     GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
@@ -306,6 +308,7 @@ def get_cvss_score(cve_or_ghsa, url, severity, cache=None):
     CVSS_vectorString = None
     CVSS_RISK_SCORE = 0.0
     Rejected_Reason = None
+    CWE_ID = None
 
     # --- Step 1: Try GitHub first ---
     if ("github" in url.lower()):
@@ -340,6 +343,10 @@ def get_cvss_score(cve_or_ghsa, url, severity, cache=None):
                 CVSS_vectorString = CVSS_vectorString_v4
             else:
                 CVSS_vectorString = CVSS_vectorString_v3
+                
+            ## Get WEEKNESS SCORE CWE ID
+            
+            CWE_ID = data['cwes'][0]['cwe_id']
 
             # Get EPSS from GitHub response if available
             if 'epss' in data and 'percentage' in data['epss']:
@@ -388,11 +395,29 @@ def get_cvss_score(cve_or_ghsa, url, severity, cache=None):
                     
                     # Try CVSS v4 first (newer), then v3
                     if "cvssMetricV40" in metrics:
-                        score = float(metrics["cvssMetricV40"][0]["cvssData"]["baseScore"])
-                        CVSS_vectorString = metrics["cvssMetricV40"][0]["cvssData"].get("vectorString")
+                        items_count = len (metrics["cvssMetricV40"])
+                        if items_count > 1:
+                            for i in range (0, items_count):
+                                if metrics["cvssMetricV40"][i]["type"] == "Primary":
+                                    score = float(metrics["cvssMetricV40"][i]["cvssData"]["baseScore"])
+                                    CVSS_vectorString = metrics["cvssMetricV40"][i]["cvssData"].get("vectorString")
+                                else:
+                                    pass
+                        else:
+                            score = float(metrics["cvssMetricV40"][0]["cvssData"]["baseScore"])
+                            CVSS_vectorString = metrics["cvssMetricV40"][0]["cvssData"].get("vectorString")
                     elif "cvssMetricV31" in metrics:
-                        score = float(metrics["cvssMetricV31"][0]["cvssData"]["baseScore"])
-                        CVSS_vectorString = metrics["cvssMetricV31"][0]["cvssData"].get("vectorString")
+                        items_count = int (len (metrics["cvssMetricV31"]))
+                        if int(items_count) > 1:
+                            for i in range (0, items_count):
+                                if metrics["cvssMetricV31"][i]["type"] == "Primary":
+                                    score = float(metrics["cvssMetricV31"][i]["cvssData"]["baseScore"])
+                                    CVSS_vectorString = metrics["cvssMetricV31"][i]["cvssData"].get("vectorString")
+                                else:
+                                    pass
+                        else:
+                            score = float(metrics["cvssMetricV31"][0]["cvssData"]["baseScore"])
+                            CVSS_vectorString = metrics["cvssMetricV31"][0]["cvssData"].get("vectorString")
                     else:
                         pass
                         
@@ -405,7 +430,12 @@ def get_cvss_score(cve_or_ghsa, url, severity, cache=None):
                         )
                         Rejected_Reason = reason
                         log (Rejected_Reason)
+
+                    #### GET weaknesses CWE Score
                     
+                    weekness = vulns[0]["cve"].get("weaknesses", [])
+                    CWE_ID = weekness[0]["description"][0]["value"]
+             
                     
                 break  # Success, exit retry loop
         
@@ -454,12 +484,14 @@ def get_cvss_score(cve_or_ghsa, url, severity, cache=None):
             "cvss": score,
             "CVSS_vectorString": CVSS_vectorString,
             "CVSS_RISK_SCORE": CVSS_RISK_SCORE,
-            "Rejected_Reason": Rejected_Reason
+            "Rejected_Reason": Rejected_Reason,
+            "CWE_ID": CWE_ID
         }
 
     # --- Step 4: Return results ---
     log ("EPSS :    " +str(epss))
-    return epss, score, CVSS_vectorString, CVSS_RISK_SCORE, Rejected_Reason
+    log ("CWE_ID  :   " +str(CWE_ID))
+    return epss, score, CVSS_vectorString, CVSS_RISK_SCORE, Rejected_Reason, CWE_ID
 
 
 def print_LLM_JSON_result_in_Excel_Sheet(vuln_data):
@@ -498,6 +530,7 @@ def print_LLM_JSON_result_in_Excel_Sheet(vuln_data):
         df = df[cols]
         """
         df["Fix"] = df["Fix"].fillna("None")
+        df["CWE_ID"] = df["CWE_ID"].fillna("None")
 
         # Save back to Excel
         df.to_excel(output_file, index=False)
@@ -539,3 +572,4 @@ with gr.Blocks(title="CVE Criticality Checker") as app:
 
 # Launch
 app.launch()
+
