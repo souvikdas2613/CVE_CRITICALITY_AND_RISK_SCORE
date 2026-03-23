@@ -146,7 +146,7 @@ load_dotenv()
 
 1. Open CLAUDE Desktop or CURSOR Tool
 
-2. Then GO to MCP TOOLD section inside .cursor/mcp.json file for integrating MCP Tool. Example code given in [mcp.json](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/mcp.json) file in this GitHub Repository. Main python file is [CVE_CRITICALITY_MCP_v3.py](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/CVE_CRITICALITY_MCP_v3.py)
+2. Then GO to MCP TOOLD section inside .cursor/mcp.json file for integrating MCP Tool. Example code given in [mcp.json](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/mcp.json) file in this GitHub Repository. Main python file is [CVE_CRITICALITY_MCP_v4.py](https://github.com/souvikdas2613/CVE_CRITICALITY_AND_RISK_SCORE/blob/main/CVE_CRITICALITY_MCP_v4.py)
 
 3. On your Local directory keep the Python file and INPUT EXEL sheet "cve.xlsx" together. Make sure Input file name does not differ.
 
